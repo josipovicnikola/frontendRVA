@@ -1,0 +1,31 @@
+<div class="container">
+    <h3 mat-dialog-title *ngIf="flag==1">Dodavanje klijenta</h3>
+    <h3 mat-dialog-title *ngIf="flag==2">Modifikacija klijenta</h3>
+    <h3 mat-dialog-title *ngIf="flag==3">Brisanje klijenta</h3>
+    <form class="mat-dialog-content" #formControl="ngForm">
+      <div class="form">
+        <mat-form-field>
+          <input matInput placeholder="Ime" [(ngModel)]="data.ime" name="ime" [disabled]="flag==3" required>
+        </mat-form-field>
+      </div>
+      <div class="form">
+        <mat-form-field>
+          <input matInput placeholder="Prezime" [(ngModel)]="data.prezime" name="prezime" [disabled]="flag==3" required>
+        </mat-form-field>
+      </div>
+      <div class="form">
+        <mat-form-field>
+          <input matInput placeholder="Broj licne karte" [(ngModel)]="data.broj_lk" name="broj_lk" [disabled]="flag==3" required>
+        </mat-form-field>
+      </div>
+      <div class="form">
+          <mat-form-field>
+            <input matInput placeholder="Kredit" [(ngModel)]="data.kredit" name="kredit" [disabled]="flag==3" required>
+          </mat-form-field>
+        </div>
+      <button mat-button *ngIf="flag==1" [type]="submit" [mat-dialog-close]="1" (click)="add()" [disabled]="!formControl.valid">Dodaj</button>
+      <button mat-button *ngIf="flag==2" [type]="submit" [mat-dialog-close]="1" (click)="update()" [disabled]="!formControl.valid">Izmeni</button>
+      <button mat-button *ngIf="flag==3" [type]="submit" [mat-dialog-close]="1" (click)="delete()">Obriši</button>
+      <button mat-button (click)="cancel()">Odustani</button>
+    </form>
+  </div>
